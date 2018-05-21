@@ -16,9 +16,6 @@ mydata$poutcome<-NULL
 library(dplyr)
 mydata<-mydata%>%mutate_if(is.character, as.factor)
 
-#check to see if there is any missing value
-anyNA(mydata)
-
 #Remove the'unknown' value from the default column as out of 41776 records, there are only 3 yeses and 8596 unknown.  The model will be built based on the status "unknown," which is missing data.
 #Same applies to loan
 mydata$default[mydata$default=='unknown']<-'no'

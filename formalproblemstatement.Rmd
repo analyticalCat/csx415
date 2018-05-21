@@ -3,15 +3,13 @@ title: "Problem Statement: Bank of Portugal Telephone Campaign Predicting Model"
 author: "Jess Zhang"
 date: "April 9, 2018"
 output:
-  word_document: default
-  html_document: default
   pdf_document: default
 ---
 
 # Project Background 
-Bank of Portugal ses telephone campaigns to sell term deposits. The campaign team from Bank of Portugal wants to be able to predict the campaign outcome and develop strategies to improve its campaign effecitveness.
+Bank of Portugal uses telemarketing campaigns to generate term deposits.  Traditionally the industry expects 2-4% convertion rate from these campaigns.  Since the labor is expensive, the rate of conversion directly affects the profit margin of the campaign.  Bank of Portugal would like to work with the data scientists from CSX415 and develop a model to predict the outcome of the future campaign.  With this model, Bank of Potugal can better plan their outgoing calls and target its client base more effectively. 
 
-The team has collected its past campaign data and stored the information in a csv file. 
+The campaign department of Bank of Portugal has collected its past campaign data for this purpose. The data includes both clients profile information as well as the information on each campaign calls.
 <br><br>
 
 # Stakeholders
@@ -32,7 +30,7 @@ Email: Nick.N@gmail.com
 <br><br>
 
 # Project Scope
-Many factors, such as age, job, and loan amount can affect people's banking decisions.  Bank of Portugal believes it needs to develop a better targeted marketing strategy towards different profile groups.  The goal of this project is to provide the campaign department with meaningful grouping of its clients from past campaigning data.    
+Many factors, such as age, job, and loan amount can affect people's decisions on a term deposit.  The goal of this project is to provide Bank of Portugal with meaningful grouping of its clients from past campaigning data.    
 
 The current campaign success rate from this dataset is at 23.6%, which means more than 75 percent of calls yield no deposit. In order to better utilize staffs' time, the campaign manager needs to be able to first "predict" the success likelihood and then direct his team with appropriate actions. Since there is no pre-existing model to compare with, the CSX415 data science team will use a "naive analysis" as the baseline.
 

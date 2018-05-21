@@ -16,7 +16,6 @@ train <- mydata[-indexes,]
 mydata.glm<-glm(y~.,data=mydata, family=binomial)
 summary(mydata.glm)
 
-#####################################################################################3
 #typeof(train.model) == list
 test_x<-test
 test_x$y<-NULL
@@ -26,9 +25,10 @@ train.glm.predictions.f<-as.factor(ifelse(train.glm.predictions>0.5, 'yes','no')
 train.glm.cfMatrix<-confusionMatrix(train.glm.predictions.f, test$y)
 
 library('pROC')
-plot(roc(test$y, train.glm.predictions)) # saved to graphs directory as glm_ROC.
+#plot(roc(test$y, train.glm.predictions)) # saved to graphs directory as glm_ROC.
+#####################################################################################3
 
-#next algorithm to try is random forest
+#random forest
 
 library("randomForest")
 library("caret")
@@ -38,21 +38,7 @@ train.rf.predictions.f<-predict(train.rf, test_x, type="response")
 train.rf.cfMatrix<-confusionMatrix(train.rf.predictions.f, test$y)
 plot(roc(test$y, train.rf.predictions[,2]))
 
-
- randomForest(y~age+job+marital+education+default+housing+loan+contact, data=train)
- Call:
- randomForest(formula = y ~ age + job + marital + education +      default + housing + loan + contact, data = train)
-               Type of random forest: classification
-                     Number of trees: 500
-No. of variables tried at each split: 2
-
-        OOB estimate of  error rate: 20.52%
-Confusion matrix:
-      no yes class.error
-no  8799  65 0.007333032
-yes 2217  40 0.982277359
-
-
+#####################################################################################3
 
 #use svm
 library(e1071)
@@ -61,10 +47,16 @@ train.svm<- svm(y ~ . , train, probabilities=TRUE)
 train.svm.predictions.f <- predict(train.svm, test_x)
 train.svm.predictions<-attr(train.svm.predictions.f,"probabilities")
 train.svm.cfMatrix<-confusionMatrix(train.svm.predictions.f, test$y)
+print(nrow(test$y))
+print(nrow(train.svm.predictions[,2]))
 plot(roc(test$y, train.svm.predictions[,2]))
 
+#####################################################################################3
+
 #combine all three plots
-plot(roc(test$y, train.glm.predictions), col="red", main="ROC Comparison")
+plot(roc(test$y, tratrain.svm.predictions[,2]), col="red", main="ROC Comparison")
 lines(roc(test$y, train.randomForest.predictions[,2]), col="blue")
 lines(roc(test$y, train.svm.predictions[,2]), col="green")
+
+
 
