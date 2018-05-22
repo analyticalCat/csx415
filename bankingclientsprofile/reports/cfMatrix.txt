@@ -1,0 +1,84 @@
+
+linear regression model confusion matrix:
+Confusion Matrix and Statistics
+
+          Reference
+Prediction   no  yes
+       no  8880  658
+       yes  249  510
+                                          
+               Accuracy : 0.9119          
+                 95% CI : (0.9063, 0.9173)
+    No Information Rate : 0.8866          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.4831          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.9727          
+            Specificity : 0.4366          
+         Pos Pred Value : 0.9310          
+         Neg Pred Value : 0.6719          
+             Prevalence : 0.8866          
+         Detection Rate : 0.8624          
+   Detection Prevalence : 0.9263          
+      Balanced Accuracy : 0.7047          
+                                          
+       'Positive' Class : no              
+                                          
+
+random forest model confusion matrix:
+Confusion Matrix and Statistics
+
+          Reference
+Prediction   no  yes
+       no  8800  522
+       yes  329  646
+                                          
+               Accuracy : 0.9174          
+                 95% CI : (0.9119, 0.9226)
+    No Information Rate : 0.8866          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.5572          
+ Mcnemar's Test P-Value : 4.652e-11       
+                                          
+            Sensitivity : 0.9640          
+            Specificity : 0.5531          
+         Pos Pred Value : 0.9440          
+         Neg Pred Value : 0.6626          
+             Prevalence : 0.8866          
+         Detection Rate : 0.8546          
+   Detection Prevalence : 0.9053          
+      Balanced Accuracy : 0.7585          
+                                          
+       'Positive' Class : no              
+                                          
+
+svm model confusion matrix:
+Confusion Matrix and Statistics
+
+          Reference
+Prediction   no  yes
+       no  8938  738
+       yes  191  430
+                                          
+               Accuracy : 0.9098          
+                 95% CI : (0.9041, 0.9152)
+    No Information Rate : 0.8866          
+    P-Value [Acc > NIR] : 1.009e-14       
+                                          
+                  Kappa : 0.4363          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.9791          
+            Specificity : 0.3682          
+         Pos Pred Value : 0.9237          
+         Neg Pred Value : 0.6924          
+             Prevalence : 0.8866          
+         Detection Rate : 0.8680          
+   Detection Prevalence : 0.9397          
+      Balanced Accuracy : 0.6736          
+                                          
+       'Positive' Class : no              
+                                          

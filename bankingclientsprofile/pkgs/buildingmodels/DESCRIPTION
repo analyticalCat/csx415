@@ -1,0 +1,28 @@
+Package: buildingmodels
+Title: Machine Learning Models on Bank of Protugal's Marketing Data
+Version: 1.0.0.0
+Authors@R: person("Jess", "Zhang", email = "JessZh@gmail.com", role = c("aut", "cre"))
+Description: 
+This package contains six functions: 
+loadData(infile): load and clean the banking data prior to the model building.  This should be called whenever we have new data in the data file. 
+BoPModels(mydata): build a linear regression model
+testthat(): Verify data file exits
+Depends: 
+    R (>= 3.4.4), 
+    caret,
+    dplyr, 
+    pROC, 
+    e1071,
+    randomForest,
+    testthat
+Imports: 
+    dplyr,
+    pROC,
+    caret,
+    randomForest,
+    e1071,
+    testthat
+License: Open
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1

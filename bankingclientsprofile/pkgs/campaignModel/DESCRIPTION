@@ -1,0 +1,27 @@
+Package: campaignModel
+Title: Modeling and scoring of the marketing data
+Version: 1.0.0.0
+Authors@R: person("Jess", "Zhang", email = "JessZh@gmail.com", role = c("aut", "cre"))
+Description: 
+This package contains two functions: 
+cppredict(infile): predicting the success probability of the next campaign
+testthat(): Verify data file exits
+Depends: 
+    R (>= 3.4.4), 
+    caret,
+    dplyr, 
+    pROC, 
+    e1071,
+    randomForest,
+    testthat
+Imports: 
+    dplyr,
+    pROC,
+    caret,
+    randomForest,
+    e1071,
+    testthat
+License: Open
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1

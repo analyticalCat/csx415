@@ -18,7 +18,7 @@ The key players who will be involved in this project are:
 * John Smith -- Campaign Manager from Bank of Portugal's Telemarketing department. He is the main stakeholder and point of contact for Bank of Portugal. John and his team will be using the model to analyze their client base and develop campaign strategy accordingly.  
 Email: John.Smith@bancdeportugal.com
 
-* Ashley Harvey -- Data Analyst from Bank of Portual. Her job is to collect and record campaign data. Once the model is deployed, Ashley will be the primary user of this model and to report results to John.
+* Ashley Harvey -- Data Analyst from Bank of Portual. Her job is to collect and record campaign data. Once the model is deployed, Ashley will be the primary user of this model and to report results to John. Ashley is proficient with R programming and is able to run R scripts and packages.
 Email: Ashley.Harvey@bancdeportugal.com
 
 * Jessica Zhang -- Data Scientist from CSX415. She is the assigned to this project to develop an effective machine learning model to predict campaign outcome therefore help Bank of Portugal to understand and improve their campaign effectiveness.
@@ -34,18 +34,20 @@ Many factors, such as age, job, and loan amount can affect people's decisions on
 
 The current campaign success rate from this dataset is at 23.6%, which means more than 75 percent of calls yield no deposit. In order to better utilize staffs' time, the campaign manager needs to be able to first "predict" the success likelihood and then direct his team with appropriate actions. Since there is no pre-existing model to compare with, the CSX415 data science team will use a "naive analysis" as the baseline.
 
-The campaign manager determines that a model with 80 percent accuracy will be useful. if the model that yields a less than 75 percent accuracy will not be useful at all.  
-
 Developing of the marketing strategy is outside of the scope of this project.
 
 A few algorithms will be run and the best suited model will be built to analyze the given dataset.  The CSX425 team will share and disucss the analysis with the campaign manager of Bank of Portugal.  The campaign manager and his team can continue to use the model to analyze data in the future.
 
 The delivered model will work with additional data in the dataset.  However, the model may not work if the client adds or removes columns from the dataset without conselingn this project team.
 
+# Success Criteria
+The average probability of each campaign call is 23%, a blanket "no" prediction has 77 percent chance to be right.  Bank of Portugal and the CSX415 project team agree that a model with over 90 percent accuracy will be effecient.
+
+
 <br><br>
 
 #Benefits of the Project
-With a model which can predict at least 80 percent of the outcome, the campaign manager can focus most his team's effort on the clients who are most likely to make a term deposit during busy season and call the rest during low season.  
+With a model which can predict at least 90 percent of the outcome, the campaign manager can focus most his team's effort on the clients who are most likely to make a term deposit during busy season and call the rest during low season.  
 
 The campaign team can also develop different call tactics towards different profile group therefore improve the overall campaign effectiveness.
 
@@ -63,8 +65,8 @@ The CSX415 project team will be working on this project for the next 2 months.  
 
 Milestone one: 4/30/2018<br>
 
-* The CSX team will deliver the preliminary result to the client on 4/30/2018.  <br>
-* The CSX team will discuss the final delivery date with Bank of Portugal.<br>
+* The CSX415 team will deliver the preliminary result to the client on 4/30/2018.  <br>
+* The CSX415 team will discuss the final delivery date with Bank of Portugal.<br>
 * The project scope and final delivery date can be adjusted based on the result of deliverable one, upon the mutual agreement of both CSX415 team and Bank of Portugal.<br><br>
 
 Final Delivery: 5/31/2018<br>
