@@ -3,156 +3,178 @@ title: "Project Performance"
 author: "Jessica Zhang"
 date: "April 26, 2018"
 output:
-  html_document: default
   word_document: default
   pdf_document: default
+  html_document: default
 ---
 
 
 #Approach
-* Irrelevant data could cause unnecessary noise and performance drop. So before analysis, we will need to remove irrelevant data.
-* Null data needs to be dealt with as well.  
-* Naive analysis will be performed on the dataset as the baseline.
-* Linear Regression model will be used for initial analysis.
-* Random Forest and Expectation Maximization will also be used for analysis.
- 
-
-<br><br>
-
-#Data cleaning
-Columns 9-20 contains the campaign related information and are not related to clients' profile.  So we have removed the extra information and saved the new data to another file named "updatedbankingdata.csv." In the rest of this project, we will be using data from updatedbankingdata.csv.
-
-The updated data has totally 9 columns of data:  
-
-1. age (numeric)
-2. job : type of job (categorical: "admin.","blue-collar","entrepreneur","housemaid","management","retired","self-employed","services","student","technician","unemployed","unknown")
-3. marital : marital status (categorical: "divorced","married","single","unknown"; note: "divorced" means divorced or widowed
-4. education (categorical: "basic.4y","basic.6y","basic.9y","high.school","illiterate","professional.course","university.degree","unknown")
-5. default: has credit in default? (categorical: "no","yes","unknown")
-6. housing: has housing loan? (categorical: "no","yes","unknown")
-7. loan: has personal loan? (categorical: "no","yes","unknown")
-8. contact: contact communication type (categorical: "cellular","telephone")
-9. y: was the campaign successful? ("no", "yes")
+* Check the integrity of the data and clean the data if necessary.  
+* Perform a naive analysis on the dataset as the baseline.  
+* The Linear Regression model will be used for initial analysis.  
+* Random Forest and SVM will also be used for comparison.  
+* Choose the optimal algorithm and include the model as well as the scoring function in the format of an R package.  
    
-<br><br>
-
-#Naive Analysis -- The Age Group Assumption
-We assume the effectiveness of the campaign is somehow related to the age of the clients and we look at the number of success each age group generated in the past campaign, we can see the deposit distribution in the figure below:
-
+  
+#Data Cleaning  
+The data is really clean.  All columns contains consistent data. No spelling errors and no missing values in any fields.  The only column we have taken out is the poutcome column which contains the same information as the outcome column 'y.'  
+  
+  
+#Naive Analysis -- The Age Group Assumption  
+We assume the effectiveness of the campaign is somehow related to the age of the clients and we look at the number of success each age group generated in the past campaign, we can see the deposit distribution in the figure below:  
+  
 ```{r echo=FALSE}
-setwd("C:/Users/jess_/Documents/GitHub/CSX415-project/bankingclientsprofile")
-mydata <- read.csv(file="updatedbankingdata.csv", header=TRUE, check.names=FALSE, sep=",")
+setwd("GitHub/CSX415-project")
+mydata <- read.csv(file="bankingclientsprofile/data/updatedbankingdata.csv", header=TRUE, check.names=FALSE, sep=",")
 hist(mydata$age[mydata$y=="yes"], main="Campaign Success by Age", xlab='Age', ylab='Deposits', col='lightyellow2')
 q<-quantile(mydata$age, c(0.25,0.75))
 abline(v=q[1],col='blue', lwd=2)
 abline(v=q[2],col='blue', lwd=2)
-setwd("C:/Users/jess_/Documents/GitHub/CSX415-project")
+
 ```
-
-As we can see from the graph, the middle of the age group yields most deposits.  A simple solution will be for the campaign team to focus on the middle 50 percentile of the client base and call the remaining later. The deposits will be generated during the busy season would be:
-`r nrow(mydata[mydata$y=="yes" & mydata$age>=q[1] & mydata$age<=q[2],])`
-
-The total number of deposites generated if half the clients were randomly called would be: 
-`r nrow(mydata[mydata$y=="yes",])/2`
-
-This approach is less effective than the randomly picked clients.  Therefore, this age group model is not a good model.  
-<br><br>
-
   
-#Simple Analysis -- Linear Regression
-Next, we use the linear regression to fit the data.  Below is a summary of the model.  
+As we can see from the graph, the middle of the age group yields most deposits.  A simple solution will be for the campaign team to focus on the middle 50 percentile of the client base and call the remaining later. The deposits will be generated during the busy season would be:  
+  
+`r nrow(mydata[mydata$y=="yes" & mydata$age>=q[1] & mydata$age<=q[2],])`  
 
- |      |   FALSE |     TRUE |
- |-----:| -------:| --------:|  
- |   NO |   10622 |       11 |  
- |  YES |    3281 |       11 |  
-
-
-## Training Summary
-
-Call:  glm(formula = y ~ job + marital + education + loan + contact, 
-    family = binomial, data = train)
-
-Coefficients:    
-
-                     Intercept |                jobblue-collar    
-                      -1.07483 |                      -0.32906
-               jobentrepreneur |                  jobhousemaid    
-                      -0.98544 |                      -0.80207    
-                 jobmanagement |                    jobretired    
-                      -0.47488 |                       0.20876    
-              jobself-employed |                   jobservices    
-                      -0.88812 |                      -0.60546    
-                    jobstudent |                 jobtechnician    
-                       0.33587 |                      -0.24126    
-                 jobunemployed |                maritalmarried    
-                      -0.56344 |                       0.45415    
-                 maritalsingle |             educationbasic.6y    
-                       0.38717 |                      -0.21560    
-             educationbasic.9y |          educationhigh.school    
-                      -0.15356 |                       0.11057    
-           educationilliterate |  educationprofessional.course    
-                       0.14821 |                       0.02112       
-    educationuniversity.degree |                          loan    
-                       0.35364 |                      -0.55181    
-              contacttelephone |                      -0.93525 
- 
-
-Degrees of Freedom: 11120 Total (i.e. Null);  11100 Residual  
-Null Deviance:	    11220    
-Residual Deviance: 10520 	AIC: 10560  
-
-Confusion Matrix:  
- 
- |      |   FALSE |     TRUE |
- |-----:| -------:| --------:|  
- |   NO |    8842 |       11 |  
- |  YES |    2257 |       11 |  
-
- 
+The total number of deposites generated if half the clients were randomly called would be:   
+`r nrow(mydata[mydata$y=="yes",])/2`  
+  
+This approach is less effective than the randomly picked clients.  Therefore, this age group model is not a good model.    
   
 
-## Observations:
-1. The deviance residuals are not symmetrical, which indicates the model may not fit the data well.
-2. The coefficients matrix shows that some of the parameters are more related to the results than others.  
-  Parameters seem to be able to influence campaign output are:
-    Job, Education, Marital, Loan, and Contact
-  Parameters seem to be irrelevant to the output are:
-    Age and Default.
-3. The large number of deviance and degrees of freedom further indicates that the model is not a good fit for this dataset.
-4. The confusion matrix shows that even though most "no" lables are predicted correctly, most "yes" lables are mistakenly predicted as "no."  This model adds no apparent value to our goal of improving the marketing effectiveness.
+#Simple Analysis -- Linear Regression  
+Next, we will train the linear model with a training set with the code below:  
+  
+```r
+train.glm<-glm(y~.,data=train, family=binomial)
+train.glm.predictions<-predict(train.glm, test_x, type="response")
 
-<br><br>
+```
+  
+### Confusion Matrix and Statistics  
+  
+            
+Prediction  | no (Ref.)   |yes (Ref.)  
+------------|-------------|------   
+       no   |8869         |659  
+       yes  |276          |493  
+                                          
+               Accuracy : 0.9092          
+                 95% CI : (0.9035, 0.9147)
+    No Information Rate : 0.8881          
+    P-Value [Acc > NIR] : 1.623e-12       
+                                          
+                  Kappa : 0.4654          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+            Sensitivity : 0.9698          
+            Specificity : 0.4280          
+         Pos Pred Value : 0.9308          
+         Neg Pred Value : 0.6411          
+             Prevalence : 0.8881          
+         Detection Rate : 0.8613          
+   Detection Prevalence : 0.9253          
+      Balanced Accuracy : 0.6989          
+                                          
+       'Positive' Class : no 
 
-#Further Analysis -- Random Forest
-Call:
- randomForest(formula = y ~ ., data = mydata, importance = TRUE)
-               Type of random forest: classification
-                     Number of trees: 500
-No. of variables tried at each split: 4
+  
+  
+#Further Analysis -- Random Forest  
+Let's compare the linear regression model with random forest model:  
+  
+```r
+train.rf<-randomForest(y~., data=train, importance=TRUE)
+train.rf.predictions.f<-predict(train.rf, test_x, type="response")
+```
+  
+### Confusion Matrix and Statistics  
+          
+Prediction  | no(Ref.)  | yes(Ref.) 
+------------|-----------|--------------------
+       no   |8810       |546  
+       yes  |347        |594  
 
-        OOB estimate of  error rate: 8.52%
-Confusion matrix:
-       no  yes class.error
-no  35254 1294  0.03540549
-yes  2215 2425  0.47737069
+               Accuracy : 0.9133
+                 95% CI : (0.9077, 0.9186)
+    No Information Rate : 0.8893
+    P-Value [Acc > NIR] : 5.828e-16
 
- |      |   FALSE |     TRUE | Class.error |
- |-----:| -------:| --------:| -----------:|  
- |   NO |   35254 |     1294 |  0.03540549 |
- |  YES |    2215 |     2425 |  0.47737069 |  
- 
+                  Kappa : 0.5231
+ Mcnemar's Test P-Value : 3.453e-11
 
-## Observations:
-1. The accuracy of the model is good. We can predict 80 percent of the yes responses.  
-2. However, more than 90 percent of positive response was predicted as negative.  The result is better than linear regression, but not good enough for improving the marketing effort successfulness.
+            Sensitivity : 0.9621
+            Specificity : 0.5211
+         Pos Pred Value : 0.9416
+         Neg Pred Value : 0.6312
+             Prevalence : 0.8893
+         Detection Rate : 0.8556
+   Detection Prevalence : 0.9086
+      Balanced Accuracy : 0.7416
 
-<br><br>
+       'Positive' Class : no
+  
+  
+#Further Analysis -- SVM  
+Let's add one more model for comparison and choose the best model for this project. We can use the code below to get the svm model.  
+  
+```r
+train.svm<- svm(y ~ . , train, probabilities=TRUE)
+train.svm.predictions.f <- predict(train.svm, test_x)
+```
+  
+### Confusion Matrix and Statistics  
+         
+Prediction  | no(Ref.)    |yes(Ref.)  
+------------|-------------|----------------------------  
+       no   |8950         |761  
+       yes  |207          |379    
 
-#Further Analysis -- Expectation Maximization
+               Accuracy : 0.906
+                 95% CI : (0.9002, 0.9116)
+    No Information Rate : 0.8893
+    P-Value [Acc > NIR] : 1.807e-08
+
+                  Kappa : 0.3936
+ Mcnemar's Test P-Value : < 2.2e-16
+
+            Sensitivity : 0.9774
+            Specificity : 0.3325
+         Pos Pred Value : 0.9216
+         Neg Pred Value : 0.6468
+             Prevalence : 0.8893
+         Detection Rate : 0.8692
+   Detection Prevalence : 0.9431
+      Balanced Accuracy : 0.6549
+
+       'Positive' Class : no
+
+  
+    
+#Model Comparison    
+### Key values   
+
+|                   |Generalized Linear Model |Random Forest    |Support Vector Machine   |  
+|-------------------|-------------------------|-----------------|-------------------------|  
+|Accuracy           |                   0.9092|           **0.9133**|                    0.906|  
+|                   |                         |                 |                         |
+|Balanced Accuracy  |                   0.6989|           **0.7416**|                   0.6549|  
+|                   |                         |                 |                         |  
+|Kappa              |                   0.4654|           **0.5231**|                   0.3936|  
 
 
+Looking at above numbers, random forest has the best results in all three measurements.  
+  
+###ROC curves    
+![](bankingclientsprofile/graphs/ThreeROC.jpeg)  
 
+The red curve in the graph represents the ROC for glm, the blue curve is for random forest and the green curve is for svm.  Three curves are similar but the blue one (randoem forest) is the best fit.   
+
+  
+#Conclusion  
+Comparing three algorithms, the random forest has the best accurracy, kappa and ROC curve.  The accuracy rate of 91% also passes the success criteria. So we will choose random forest as the algorithm to train the model and predict future campaign outcome.
 
 
 

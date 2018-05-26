@@ -29,7 +29,7 @@ All code files are stored under bankingclientsprofile/srv folder.
 2. initialanalysis.R -- The naive analysis is run from this file.  A histogram is generated from this block of code and is stored and displayed in project-performance.Rmd.
 3. training.R -- This file contains the majority of the code for training and modeling.  Multiple algorithms are run and compared.
 
-# Outputs:  
+# Output:  
 1. five graphs are generated for this project:
   -The initial output-age analysis histogram Naive-age.jpeg
   -The ROC curve for glm, randomForest and svm.

@@ -1,5 +1,5 @@
 
-#This file shall only be run after the loaddata.r because it assumes the dataframe mydata is loaded and clean with 9 columns
+#This file shall only be run after the the data is loaded.  See loaddata.r for script.
 
 #split the data to training set and testing set (75/25)
 library(caret)
@@ -9,6 +9,8 @@ library(caret)
 indexes = sample(1:nrow(mydata), size=0.25*nrow(mydata))
 test <- mydata[indexes,]
 train <- mydata[-indexes,]
+test_x<-test
+test_x$y<-NULL
 
 #######################################################################
 #Run algorithms
@@ -16,9 +18,6 @@ train <- mydata[-indexes,]
 mydata.glm<-glm(y~.,data=mydata, family=binomial)
 summary(mydata.glm)
 
-#typeof(train.model) == list
-test_x<-test
-test_x$y<-NULL
 train.glm<-glm(y~.,data=train, family=binomial)
 train.glm.predictions<-predict(train.glm, test_x, type="response")
 train.glm.predictions.f<-as.factor(ifelse(train.glm.predictions>0.5, 'yes','no'))

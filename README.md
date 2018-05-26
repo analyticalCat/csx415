@@ -1,5 +1,8 @@
-# project
+#Overview 
 
-This repository is your repository for containing assets for your final project. It should include all supporting documentation, any files, code, reports and (possibly) the data to run your project.  
+The purpose of this project is to analyze the past campaign data, and to build a sustainable machine learning model to predict future campaign outcome.  
 
-You should replace this README.md file with a proper description of your project.
+#Project Content
+-This project contains scripts, data, a machine learning model and a scoring package to help users to predict future campaign outcome.
+-The deployment instruction can be found in "bankingclientsprofile/deploy/readme.md."
+-Asset.md contains a list of all useful resources in this project.
