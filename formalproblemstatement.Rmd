@@ -44,7 +44,7 @@ A few algorithms will be run and the best suited model will be built to analyze 
 The delivered model will work with new data with the same format in the datafile.  However, the model may not work if the client adds or removes columns from the datafile without counseling the CSX415 project team first.
 
 # Success Criteria
-The average probability of each campaign call is 23%, a blanket "no" prediction has 77 percent chance to be right.  Bank of Portugal and the CSX415 project team agree that a model with over 90 percent accuracy will be efficient.
+The average probability of each campaign call is 23%, a blanket "no" prediction has 77 percent chance to be right.  Bank of Portugal and the CSX415 project team agree that a model with over 90 percent accuracy will be efficient.  
   
   
 #Benefits of the Project
@@ -58,7 +58,7 @@ With future data gathering, Bank of Portugal can continue to train the model and
 # Estimated Risks
 It is reasonable to believe that there are patterns can be generated from the given dataset.  It is unlikely however possible that no meaningful pattern can be identified from given data due to insufficient data.  
   
-  
+   
 #Delivery Timeline
 The CSX415 project team will be working on this project for the next 2 months.  One data scientist and one data engineer will be working on the model and analysis full-time.  Below is the schedule of the deliverables:  
   
@@ -74,7 +74,7 @@ Final Delivery: 5/31/2018
 * The estimated final delivery date is May 31st, 2018.  The CSX415 team will give a final demo to the campaign team from Bank of Portugal on this date.  
 * The CSX415 team will transfer the entire code base and analysis result to Bank of Portugal.  
 * The CSX415 team will train one representative data analyst from Bank of Portugal on the usage and the basic maintenance of the model.  
-* The CSX415 team will provide detailed instructions on how to train and maintain the model.  
+* The CSX415 team will provide detailed instructions on how to train and maintain the model.   
 
 
 #Client Responsibilities After Delivery  
