@@ -15,11 +15,12 @@ All code files are stored under bankingclientsprofile/srv folder.
 3. training.R -- This file contains the majority of the code for training and modeling.  Multiple algorithms are run and compared.
 
 # Output:  
-1. five graphs are generated for this project:
+1. There are five graphs generated for this project. They are stored at bankingclientsprofile/graphs folder.
   -The initial output-age analysis histogram Naive-age.jpeg
   -The ROC curve for glm, randomForest and svm.
   -A graph combines the ROC for three algorithm for comparison and analysis.
 
+The rest files are stored at bankingclientsprofile/reports folder.
 2. crMatrix.txt -- contains the confusion matrix for all three algorithms.
 
 3. project-performance.pdf, project-performance.html, and project-performance.docx -- project performance analysis in three different formats.
