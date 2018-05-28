@@ -56,7 +56,7 @@ With future data gathering, Bank of Portugal can continue to train the model and
   
     
 # Estimated Risks
-It is reasonable to believe that there are patterns can be generated from the given dataset.  It is unlikely however possible that no meaningful pattern can be identified from given data due to insufficient data. 
+It is reasonable to believe that there are patterns can be generated from the given dataset.  It is unlikely however possible that no meaningful pattern can be identified from given data due to insufficient data.  
   
   
 #Delivery Timeline
