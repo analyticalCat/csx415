@@ -1,7 +1,7 @@
 # Input
 All data files are stored under bankingclientsprofile/data folder.  
--past_campaign_data.csv --This file contains 14,828 records from past campaigns. We use this data file for model building and performance analysis.
--next_campaign_data.csv --This file contains 3 campaign records for the next campaign.  We need to predict the outcome of these calls.
+1. past_campaign_data.csv. This file contains 14,828 records from past campaigns. We use this data file for model building and performance analysis.  
+2. next_campaign_data.csv. This file contains 3 campaign records for the next campaign.  We need to predict the outcome of these calls.  
 
 
 # Data
