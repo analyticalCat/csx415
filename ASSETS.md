@@ -1,12 +1,16 @@
+#Overview  
+There are many files generated for this project.  You will find the location of each useful file in this document.  
+
 # Input
 All data files are stored under bankingclientsprofile/data folder.  
 1. past_campaign_data.csv. This file contains 14,828 records from past campaigns. We use this data file for model building and performance analysis.  
 2. next_campaign_data.csv. This file contains 3 campaign records for the next campaign.  We need to predict the outcome of these calls.  
 
 
-# Data
+# Data/Model  
 1. pkgs/campaignModel -- the package that contains necessary code and data to predict future results.
 2. pkgs/campaignModel/data/model.RDS -- the model we will use to predict future results
+3. Packrat bundle -- the bundle file is too big for git.  You can find it at this [dropbox link](https://www.dropbox.com/s/zo025m6zvzoaape/csx415-project-2018-05-27.tar.gz?dl=0)  
   
 # Code
 All code files are stored under bankingclientsprofile/srv folder.  
