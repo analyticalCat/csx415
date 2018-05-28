@@ -20,7 +20,7 @@ All code files are stored under bankingclientsprofile/srv folder.
   -The ROC curve for glm, randomForest and svm.
   -A graph combines the ROC for three algorithm for comparison and analysis.
 
-The rest files are stored at bankingclientsprofile/reports folder.
+The rest files are stored at bankingclientsprofile/reports folder.  
 2. crMatrix.txt -- contains the confusion matrix for all three algorithms.
 
 3. project-performance.pdf, project-performance.html, and project-performance.docx -- project performance analysis in three different formats.
