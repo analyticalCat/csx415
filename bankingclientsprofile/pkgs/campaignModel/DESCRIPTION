@@ -3,9 +3,7 @@ Title: Modeling and scoring of the marketing data
 Version: 1.0.0.0
 Authors@R: person("Jess", "Zhang", email = "JessZh@gmail.com", role = c("aut", "cre"))
 Description: 
-This package contains two functions: 
-cppredict(infile): predicting the success probability of the next campaign
-testthat(): Verify data file exits
+This package contains only one function: cppredict(infile): predicting the success probability of the next campaign
 Depends: 
     R (>= 3.4.4), 
     caret,

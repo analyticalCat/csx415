@@ -1,27 +1,27 @@
-R Markdown
-----------
+# Input
+All data files are stored under bankingclientsprofile/data folder.  
+-past_campaign_data.csv --This file contains 14,828 records from past campaigns. We use this data file for model building and performance analysis.
+-next_campaign_data.csv --This file contains 3 campaign records for the next campaign.  We need to predict the outcome of these calls.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# Data
+1. pkgs/campaignModel -- the package that contains necessary code and data to predict future results.
+2. pkgs/campaignModel/data/model.RDS -- the model we will use to predict future results
+  
+# Code
+All code files are stored under bankingclientsprofile/srv folder.  
+1. loaddata.R -- This file contains the code to load the data from the original data file (bank-additional-full.csv) and to clean the data for modeling.
+2. initialanalysis.R -- The naive analysis is run from this file.  A histogram is generated from this block of code and is stored and displayed in project-performance.Rmd.
+3. training.R -- This file contains the majority of the code for training and modeling.  Multiple algorithms are run and compared.
 
-``` r
-summary(cars)
-```
+# Output:  
+1. five graphs are generated for this project:
+  -The initial output-age analysis histogram Naive-age.jpeg
+  -The ROC curve for glm, randomForest and svm.
+  -A graph combines the ROC for three algorithm for comparison and analysis.
 
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+2. crMatrix.txt -- contains the confusion matrix for all three algorithms.
 
-Including Plots
----------------
+3. project-performance.pdf, project-performance.html, and project-performance.docx -- project performance analysis in three different formats.
 
-You can also embed plots, for example:
-
-![](ASSETS_files/figure-markdown_github/pressure-1.png)
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+4. problem statement -- This file stated the mission of the project, stakeholders, team composition as wel as the success criteria.  

@@ -1,11 +1,16 @@
+library(dplyr)
+library(caret)
+library(randomForest)
 
-#This file shall only be run after the the data is loaded.  See loaddata.r for script.
+
+# Read CSV into R
+mydata <- read.csv(file="bankingclientsprofile/data/past_campaign_data.csv", header=TRUE, check.names=FALSE, sep=",")
+
+#force all char type data into factor so randomforest can be run
+mydata<-mydata%>%mutate_if(is.character, as.factor)
+
 
 #split the data to training set and testing set (75/25)
-library(caret)
-# set.seed(123)
-# indexes<-createDataPartition(mydata$y, p=.75, list=FALSE)
-# or
 indexes = sample(1:nrow(mydata), size=0.25*nrow(mydata))
 test <- mydata[indexes,]
 train <- mydata[-indexes,]
@@ -57,5 +62,7 @@ plot(roc(test$y, tratrain.svm.predictions[,2]), col="red", main="ROC Comparison"
 lines(roc(test$y, train.randomForest.predictions[,2]), col="blue")
 lines(roc(test$y, train.svm.predictions[,2]), col="green")
 
-
-
+#################################################
+#to build the final model for scoring, we should use the whole dataset instead of 75 percent of it
+train.rf<-randomForest(y~., data=mydata, importance=TRUE)
+saveRDS(train.rf,"model.RDS")

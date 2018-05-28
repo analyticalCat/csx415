@@ -1,9 +1,9 @@
 #Most code in this file is deprecated since the "past_campaign_data.csv" is a clean version of the original data.  The commented code can be reused to clean future data
 
-#setwd("C:/Users/jess_/Documents/GitHub/CSX415-project")
+#setwd("~/GitHub/CSX415-project")
 
 # Read CSV into R
-#mydata <- read.csv(file="data/bank-additional-full.csv", header=TRUE, check.names=FALSE, sep=";")
+#mydata <- read.csv(file="bankingclientsprofile/data/past_campaign_data.csv", header=TRUE, check.names=FALSE, sep=",")
 
 #Remove poutcome as this column is same as y.  It will mess up the data.
 #mydata$poutcome<-NULL

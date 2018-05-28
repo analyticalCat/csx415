@@ -4,7 +4,7 @@
 \alias{cppredict}
 \title{cppredict Function}
 \usage{
-cppredict(infile = "data/next_campaign_data.csv")
+cppredict(infile = "bankingclientsprofile/data/next_campaign_data.csv")
 }
 \arguments{
 \item{infile}{Defaults to "next_campaign_data.csv" under the data folder}
@@ -13,7 +13,7 @@ cppredict(infile = "data/next_campaign_data.csv")
 a dataframe of campaign result predictions
 }
 \description{
-This function allows you to update the "updatedbankingdata.csv" from the infile of your choice.  The infile should be ; separated csv files. The dataframe will be returned.
+This function will predict the result of your next campaign call.  The parameter infile should be a , separated csv files. A dataframe with the prediction will be returned.
 }
 \examples{
 cppredict(infile)
